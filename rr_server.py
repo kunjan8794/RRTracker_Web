@@ -1,9 +1,6 @@
-import asyncio
-import itertools
-
 import tornado.ioloop
 import tornado.web
-
+from pathlib import Path
 import rr_main
 
 
@@ -14,7 +11,8 @@ class MainHandler(tornado.web.RequestHandler):
         result = "N/A"
         for filename, file in self.request.files.items():
             print(filename)
-            file_path = "/home/kpatel/uploads/" + filename
+            home = str(Path.home())
+            file_path = home + "/rr_uploads/" + filename
             output_file = open(file_path, 'wb')
             output_file.write(file[0]['body'])
         if 'Points' in self.request.headers.keys():
