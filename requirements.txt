@@ -4,3 +4,4 @@ tornado==5.1
 numpy==1.19.1
 opencv_python==4.4.0.46
 scikit_learn==0.24.0
+opencv-contrib-python
