@@ -104,9 +104,8 @@ def main(path, pts_array):
                 all.append(all1)
 
                 FPS = 30
-                Win = 30
-                if len(
-                        all) >= FPS * Win:  # fps = 30 frames/second, 300frames = 20 second moving window (30frames *20seconds).
+                Win = 5
+                if len(all) >= FPS * Win:  # fps = 30 frames/second, 300frames = 20 second moving window (30frames *20seconds).
                     result = []
                     all = all[-FPS * Win:]
                     window = np.asarray(all)
@@ -146,6 +145,8 @@ def main(path, pts_array):
                     tao = str('%.2f' % (out6))
                     ce = 'RR: ' + tao
                     cv2.putText(HSVframe, ce, (30, 80), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 5, cv2.LINE_AA)
+                    # cv2.imshow("frame", HSVframe)
+                    # cv2.waitKey(1)
             counter += 1
             # key = cv2.waitKey() & 0xFF
         if tmp_cnt == 0:  ## key == ord("s"):
@@ -168,8 +169,9 @@ def main(path, pts_array):
 
     camera.release()
     cv2.destroyAllWindows()
+    # print(return_value)
     return return_value
 
 
 if __name__ == "__main__":
-    main()
+    main(None, None)
